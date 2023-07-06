@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* vh stands for "viewport height" and is a percentage of the full height of the browser window. */
+    margin: 0;
+    background-color: #f0f0f0; /* light gray background */
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #008CBA; /* blue color */
+    color: white;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #007B9A; /* darker blue color on hover */
+}

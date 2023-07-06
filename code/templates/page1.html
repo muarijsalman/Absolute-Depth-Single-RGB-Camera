@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <form class="p-3 text-center" action="/" method="post">
+      <input class="form-control" type="file" name="imagefile" />
+      <input class="btn btn-primary mt-3" type="submit" value="Select Model" />
+    </form>
+  </body>
+</html>

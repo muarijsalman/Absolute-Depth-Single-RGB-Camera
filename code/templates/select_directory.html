@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Select a Directory</title>
+
+    <style>
+      /* Center everything in the body */
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f8f9fa;
+      }
+
+      /* Add some margin to form groups */
+      .form-group {
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2 class="text-center">Select a Directory</h2>
+
+    <!-- Form for selecting the directory -->
+    <form action="/run_script" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="file">Choose directory:</label>
+        <input
+          type="file"
+          id="file"
+          name="file"
+          webkitdirectory
+          directory
+          class="form-control-file"
+        />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </body>
+</html>

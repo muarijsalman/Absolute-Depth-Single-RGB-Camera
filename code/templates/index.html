@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Choose Your Model</title>
+
+    <style>
+      /* Center everything in the body */
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f8f9fa;
+      }
+
+      /* Add some margin to form groups */
+      .form-group {
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2 class="text-center">Choose Your Model</h2>
+
+    <!-- Form for selecting the model -->
+    <form action="/select_directory" method="post">
+      <div class="form-group">
+        <input
+          type="radio"
+          id="model"
+          name="model"
+          value="Absolute depth model"
+          checked
+        />
+        <label for="model">Absolute depth model</label>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
