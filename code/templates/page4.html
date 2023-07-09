@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Go Back Home</title>
+
+    <style>
+      /* Center everything in the body */
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(to right, #000428, #004e92);
+        color: white; /* Changing text color to white for better contrast against the blue background */
+        padding-top: 50px; /* Shift everything down */
+      }
+
+      /* Create a grid for image pairs */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        justify-content: center;
+        padding: 20px;
+        margin: 50px auto; /* Adjusted to increase horizontal size and keep it centered */
+        width: 1300px; /* Increased the width */
+        border: 1px solid white;
+      }
+
+      /* Add custom styling for the images */
+      .img-pair img {
+        width: 200px;
+        height: 120px;
+        object-fit: cover; /* Helps to maintain the aspect ratio */
+      }
+
+      /* Change the color of the button to have better contrast against the blue background */
+      .btn-primary {
+        background-color: white;
+        color: #007bff;
+      }
+
+      /* Change the border color of the button when hovered over */
+      .btn-primary:hover {
+        border-color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <!-- Text and button layout -->
+      <div class="row align-items-center">
+        <div class="col-lg-6 text-lg-left text-center btn1">
+          <!-- Left align on large screens, center on smaller -->
+          <h2 style="margin-left: 80px">Click to go back to home page</h2>
+          <form action="/">
+            <button
+              type="submit"
+              class="btn btn-primary btn-lg"
+              style="margin-left: 200px"
+            >
+              Home Page
+            </button>
+          </form>
+        </div>
+
+        <div class="col-lg-6 text-lg-right text-center btn2">
+          <!-- Right align on large screens, center on smaller -->
+          <h2 style="margin-right: 70px">
+            Click to run model on another directory
+          </h2>
+          <form action="/select_directory" method="post">
+            <!-- Adjust action as necessary -->
+            <button
+              type="submit"
+              class="btn btn-primary btn-lg btn2"
+              style="margin-right: 240px"
+            >
+              Change Directory
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Image display -->
+      <div class="grid">
+        {% for original, new in image_pairs %}
+        <div class="img-pair">
+          <img src="{{ url_for('serve_original_image', filename=original) }}" />
+          <img src="{{ url_for('serve_output_image', filename=new) }}" />
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

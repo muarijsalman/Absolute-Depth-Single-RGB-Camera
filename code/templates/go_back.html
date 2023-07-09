@@ -45,5 +45,8 @@
         </div>
       </form>
     </div>
+    {% for image in images %}
+    <img src="{{ url_for('serve_image', filename=image) }}" />
+    {% endfor %}
   </body>
 </html>

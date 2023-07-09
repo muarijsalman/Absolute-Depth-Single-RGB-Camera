@@ -1,11 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Choose Your Model</title>
+
+    <style>
+      /* Create a gradient background */
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(to right, #000428, #004e92);
+        color: #fff; /* Make text color white for better contrast */
+      }
+
+      /* Add some margin to form groups */
+      .form-group {
+        margin: 20px 0;
+        width: 500px;
+      }
+
+      /* Add a box around the form with some padding and shadows */
+      form {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Style the submit button */
+      .btn-submit {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+      }
+
+      .btn-submit:hover {
+        background-color: #0056b3;
+        color: #fff;
+      }
+    </style>
   </head>
+
   <body>
-    <div class="center">
-      <button class="btn">Select Image directory</button>
-    </div>
+    <h2 class="text-center">Choose Your Model</h2>
+
+    <!-- Form for selecting the model -->
+    <form action="/select_directory" method="post">
+      <div class="form-group">
+        <label for="model">Model</label>
+        <select id="model" name="model" class="form-control">
+          <option value="Absolute depth model" selected>
+            Absolute depth model
+          </option>
+          <option value="Relative depth model">Relative depth model</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-submit">Submit</button>
+        <!-- Customized button -->
+      </div>
+    </form>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
