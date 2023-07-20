@@ -15,6 +15,7 @@ import utils.logging as logging
 
 from dataset.base_dataset import get_dataset
 from configs.train_options import TrainOptions
+from CustomDataset import CustomImageDataset
 
 metric_name = ['d1', 'd2', 'd3', 'abs_rel', 'sq_rel', 'rmse', 'rmse_log',
                'log10', 'silog']
@@ -57,16 +58,26 @@ def main():
         dataset_kwargs['crop_size'] = (352, 704)
     else:
         dataset_kwargs['crop_size'] = (args.crop_h, args.crop_w)
+    
 
-    train_dataset = get_dataset(**dataset_kwargs)
-    val_dataset = get_dataset(**dataset_kwargs, is_train=False)
+    # train_dataset = get_dataset(**dataset_kwargs)
+    # val_dataset = get_dataset(**dataset_kwargs, is_train=False)
+
+    # train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=args.batch_size,
+    #                                            shuffle=True, num_workers=args.workers, 
+    #                                            pin_memory=True, drop_last=True)
+    # val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=1, shuffle=False,
+    #                                          pin_memory=True)
+    annotations_file = './depthmap.csv'
+    img_dir = './drone_imagery'
+    train_dataset = CustomImageDataset(annotations_file,img_dir).__getitem__()
+    val_dataset = CustomImageDataset(annotations_file,img_dir).__getitem__()
 
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=args.batch_size,
                                                shuffle=True, num_workers=args.workers, 
                                                pin_memory=True, drop_last=True)
     val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=1, shuffle=False,
                                              pin_memory=True)
-
     # Training settings
     criterion_d = SiLogLoss()
     optimizer = optim.Adam(model.parameters(), args.lr)

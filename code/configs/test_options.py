@@ -6,7 +6,7 @@ class TestOptions(BaseOptions):
         parser.add_argument('--result_dir', type=str, default='./code/results',
                             help='save result images into result_dir/exp_name')
         parser.add_argument('--ckpt_dir',   type=str,
-                            default='./code/ckpt/best_model_nyu.ckpt', 
+                            default='./code/ckpt/best_model_kitti.ckpt', 
                             help='load ckpt path')
         
         parser.add_argument('--save_eval_pngs', default=True, action='store_true',

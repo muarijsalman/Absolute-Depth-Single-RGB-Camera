@@ -20,6 +20,12 @@ import pickle
 from filelock import FileLock
 import time
 
+# Import required modules
+# from yolov5 import load, utils  # load model and utilities
+
+# Load the YOLO model
+# model_yolo = load('yolov5s.pt')  # Load YOLOv5s model. Change path if required.
+
 lock = FileLock("my_file.lock")
 
 with lock:
@@ -71,12 +77,29 @@ with lock:
         print("\n3. Inference & Evaluate")
         for batch_idx, batch in enumerate(test_loader):
             input_RGB = batch['image'].to(device)
+            print(type(input_RGB))
             filename = batch['filename']
 
             with torch.no_grad():
                 pred = model(input_RGB)
             pred_d = pred['pred_d']
-            print(pred_d[0,0,:,:])
+            # height, width = pred_d.shape[2], pred_d.shape[3]
+            # center_y, center_x = height // 2, width // 2
+            # center_depth_values = pred_d[0, 0, center_y-1:center_y+1, center_x-1:center_x+1]
+            # print(center_depth_values)
+            print(pred_d[0][0][599][511])
+            print(pred_d.shape)
+
+            # yolo_results = model_yolo(input_RGB)
+            # for *box, conf, cls in yolo_results.xyxy[0]:  # for each detected object
+            #     # Extract bounding box coordinates
+            #     x1, y1, x2, y2 = box
+            #     # Compute center of bounding box
+            #     center_x, center_y = (x1 + x2) // 2, (y1 + y2) // 2
+            #     # Get depth value at the center of the bounding box
+            #     center_depth = pred_d[0, 0, int(center_y), int(center_x)]
+            #     print(f"Object {int(cls)}: depth = {center_depth.item()}")
+
             if args.do_evaluate:
                 depth_gt = batch['depth'].to(device)
                 pred_d, depth_gt = pred_d.squeeze(), depth_gt.squeeze()

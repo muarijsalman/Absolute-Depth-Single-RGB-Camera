@@ -24,7 +24,7 @@ def run_script():
         directory_name = os.path.dirname(file.filename)
         subprocess.Popen(['python', './code/test.py', '--dataset', 'imagepath', 
                         '--data_path', './code/'+directory_name, '--save_visualize'])
-        time.sleep(10)
+        time.sleep(8)
         with lock:
             global original_dir
             original_dir = 'E:\\MachVis\\GLPDepth-main\\code\\'+directory_name  # update this with your actual original images directory path
